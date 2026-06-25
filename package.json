@@ -10,9 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "cloudflare-deploy": "pnpm run build && npx wrangler deploy --assets=dist"
+    "cloudflare-deploy": "pnpm run build && npx wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/fredoka": "^5.2.10",
     "@fontsource/nunito": "^5.2.7",

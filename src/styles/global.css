@@ -6,6 +6,8 @@
 
 @import "tailwindcss";
 
+@source "../**/*.{astro,html,js,jsx,md,mdx,ts,tsx}";
+
 @theme {
   /* Fuentes */
   --font-display: "Nunito", sans-serif;

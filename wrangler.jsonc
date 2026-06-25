@@ -1,0 +1,17 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-06-25",
+	"compatibility_flags": ["global_fetch_strictly_public"],
+	"name": "pequenosmomentos-seo",
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	"vars": {
+		"NODE_VERSION": "22.12.0"
+	},
+	"observability": {
+		"enabled": true
+	}
+}

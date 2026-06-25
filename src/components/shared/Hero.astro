@@ -1,0 +1,154 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  type: "renta" | "venta";
+  /** Items de la colección correspondiente, usados para el collage y el contador */
+  items: CollectionEntry<"renta">[] | CollectionEntry<"venta">[];
+  whatsappUrl: string;
+}
+
+const { type, items, whatsappUrl } = Astro.props;
+const isRenta = type === "renta";
+
+// Fotos para el collage — las primeras 4 con imagen disponible
+const collage = items.filter((i) => i.data.imageBanner).slice(0, 4);
+
+const config = isRenta
+  ? {
+      eyebrow: "Fiestas infantiles · CDMX y Estado de México",
+      titleLine1: "Castillos, albercas",
+      titleLine2: "y toboganes",
+      highlight: "en renta",
+      description: "Entrega, instalación y retiro incluidos.",
+      countSuffix: "inflables disponibles",
+      countTail: "listos para tu próxima fiesta.",
+      badges: [
+        { icon: "⭐", label: "+500 eventos realizados" },
+        { icon: "📍", label: "CDMX y Estado de México" },
+        { icon: "🎈", label: "Entrega e instalación incluida" },
+      ],
+      primaryCta: { label: "Ver inflables en renta", href: "#catalog-grid" },
+      floatingBadge: "Disponible hoy",
+    }
+    : {
+      eyebrow: "Venta para negocios · CDMX y Estado de México",
+      titleLine1: "Inflables comerciales",
+      titleLine2: "de uso rudo ",
+      highlight: "en venta",
+      description: "Para salones, guarderías y negocios de renta.",
+      countSuffix: "modelos disponibles",
+      countTail: "listos para tu negocio.",
+      badges: [
+        { icon: "🏭", label: "Fabricación propia" },
+        { icon: "🛡️", label: "Garantía incluida" },
+        { icon: "📦", label: "Envío a toda la república" },
+      ],
+      primaryCta: { label: "Ver inflables en venta", href: "#catalog-grid" },
+      floatingBadge: "Entrega coordinada",
+    };
+---
+
+<section class="relative overflow-hidden bg-surface pt-10 pb-16 md:pt-14 md:pb-20 h-screen flex items-center">
+  <div class="pointer-events-none absolute -top-24 -right-32 w-130 h-130 rounded-full bg-primary/10" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-24 -left-32 w-130 h-130 rounded-full bg-primary/10" aria-hidden="true"></div>
+
+  <div class="max-w-300 mx-auto px-5 md:px-10 relative">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex items-center gap-2 text-[13px] text-muted">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true"><span class="text-light">/</span></li>
+        <li class="text-text font-medium">
+          {isRenta ? "Renta de inflables" : "Venta de inflables"}
+        </li>
+      </ol>
+    </nav>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Columna texto -->
+      <div>
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-3">
+          {config.eyebrow}
+        </p>
+
+        <h1 class="font-display text-4xl md:text-5xl font-extrabold text-text leading-[1.1] mb-5">
+          {config.titleLine1}<br />{config.titleLine2}
+          <span class="relative inline-block">
+            {config.highlight}
+            <svg class="absolute left-0 -bottom-1 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 9 Q 50 1, 100 7 T 198 5" stroke="var(--color-cta)" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </h1>
+
+        <p class="text-muted text-base leading-relaxed mb-6 max-w-115">
+          {config.description}
+          <span class="font-semibold text-text"> {items.length} {config.countSuffix} </span>
+          {config.countTail}
+        </p>
+
+        <!-- Badges de confianza -->
+        <ul class="flex flex-wrap gap-2 mb-7">
+          {config.badges.map(({ icon, label }) => (
+            <li class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-display font-semibold text-text shadow-sm border border-border">
+              <span aria-hidden="true">{icon}</span> {label}
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTA dual -->
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={config.primaryCta.href}
+            class="inline-flex items-center gap-2 px-7 py-3.5 bg-cta hover:bg-cta-dk text-white font-display font-bold text-sm rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+          >
+            {config.primaryCta.label}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-surface border-2 border-primary text-primary font-display font-bold text-sm rounded-xl transition-all duration-200"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Cotizar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna collage de fotos -->
+      {collage.length > 0 && (
+        <div class="relative h-85 md:h-105 hidden sm:block" aria-hidden="true">
+          {collage[0] && (
+            <div class="absolute top-0 left-[8%] w-[58%] aspect-square rounded-full overflow-hidden ring-4 ring-white shadow-xl">
+              <img src={collage[0].data.imageBanner} alt="" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          {collage[1] && (
+            <div class="absolute top-[4%] right-0 w-[42%] aspect-square rounded-full overflow-hidden ring-4 ring-white shadow-xl">
+              <img src={collage[1].data.imageBanner} alt="" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          {collage[2] && (
+            <div class="absolute bottom-[6%] left-0 w-[40%] aspect-square rounded-full overflow-hidden ring-4 ring-white shadow-xl">
+              <img src={collage[2].data.imageBanner} alt="" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          {collage[3] && (
+            <div class="absolute bottom-0 right-[6%] w-[46%] aspect-square rounded-full overflow-hidden ring-4 ring-white shadow-xl">
+              <img src={collage[3].data.imageBanner} alt="" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          <div class="absolute bottom-[2%] left-[30%] inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full shadow-md text-[13px] font-display font-bold text-text">
+            <span class="w-2 h-2 rounded-full bg-cta"></span>
+            {config.floatingBadge}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

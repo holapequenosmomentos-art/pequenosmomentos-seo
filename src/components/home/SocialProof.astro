@@ -1,0 +1,89 @@
+---
+const stats = [
+  { value: "+500", label: "Eventos realizados" },
+  { value: "+5",   label: "Años de experiencia" },
+  { value: "100%", label: "Clientes satisfechos" },
+  { value: "2",    label: "Estados con cobertura" },
+];
+
+const reviews = [
+  {
+    name: "Alejandra M.",
+    location: "Naucalpan, EdoMex",
+    text: "Llegaron puntual, el castillo estaba impecable y los niños la pasaron increíble. Sin duda los volvería a contratar para la siguiente fiesta.",
+    stars: 5,
+    initial: "A",
+  },
+  {
+    name: "Roberto G.",
+    location: "Gustavo A. Madero, CDMX",
+    text: "Excelente servicio, muy profesionales. La alberca de pelotas fue el hit de la fiesta. El proceso de cotización por WhatsApp fue muy rápido.",
+    stars: 5,
+    initial: "R",
+  },
+  {
+    name: "Fernanda L.",
+    location: "Tlalnepantla, EdoMex",
+    text: "Muy buena atención desde el primer mensaje. El inflable llegó limpio y en perfectas condiciones. Lo recomiendo totalmente.",
+    stars: 5,
+    initial: "F",
+  },
+];
+
+const stars = (n: number) =>
+  Array.from({ length: 5 }, (_, i) => i < n ? "★" : "☆").join("");
+---
+
+<section class="bg-surface py-20 md:py-24" aria-label="Reseñas y estadísticas">
+  <div class="max-w-300 mx-auto px-5 md:px-10">
+
+    <!-- Eyebrow + título -->
+    <div class="text-center mb-12">
+      <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">
+        Lo que dicen nuestros clientes
+      </p>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text">
+        Más de 500 familias nos eligen
+      </h2>
+    </div>
+
+    <!-- Stats -->
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
+      {stats.map(({ value, label }) => (
+        <li class="flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border shadow-[0_2px_16px_rgba(155,93,229,0.07)]">
+          <span class="font-display text-4xl font-extrabold text-primary leading-none mb-1">
+            {value}
+          </span>
+          <span class="text-sm text-muted">{label}</span>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Reseñas -->
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {reviews.map(({ name, location, text, stars: s, initial }) => (
+        <li class="flex flex-col gap-4 p-6 bg-white rounded-2xl border border-border shadow-[0_2px_16px_rgba(155,93,229,0.07)]">
+          <!-- Estrellas -->
+          <p class="text-accent text-lg tracking-wide" aria-label={`${s} de 5 estrellas`}>
+            {stars(s)}
+          </p>
+          <!-- Texto -->
+          <p class="text-sm text-muted leading-relaxed flex-1">
+            "{text}"
+          </p>
+          <!-- Avatar + nombre -->
+          <div class="flex items-center gap-3 pt-2 border-t border-border">
+            <div class="flex items-center justify-center w-9 h-9 rounded-full bg-primary/15 font-display font-bold text-sm text-primary">
+              {initial}
+            </div>
+            <div>
+              <p class="font-display font-bold text-sm text-text">{name}</p>
+              <p class="text-[11px] text-light">{location}</p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

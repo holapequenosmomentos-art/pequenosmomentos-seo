@@ -1,0 +1,195 @@
+---
+interface Props {
+  formspreeEndpoint: string;
+}
+
+const { formspreeEndpoint } = Astro.props;
+
+const celebraciones = [
+  "Cumpleaños Infantil",
+  "Baby Shower",
+  "Bautizo",
+  "Primera Comunión",
+  "Evento Escolar",
+  "Evento Empresarial",
+  "Fiesta Familiar",
+  "Otro",
+];
+
+const serviciosRenta = [
+  "Alberca de Pelotas",
+  "Bouncy Bubble",
+  "Bumper Cars",
+  "Cerámica",
+  "Estación de Arte",
+  "Flowerpot",
+  "Funny Bunny",
+  "Ghost Kids",
+  "Invitación Digital",
+  "Less Castle",
+  "Libros para Colorear",
+  "Paquete Dúo Plus",
+  "Paquete Dúo",
+  "Rejita Blanco",
+  "Rejita Pastel",
+  "White Bounce House",
+];
+
+const serviciosVenta = [
+  "Alberca de Pelotas",
+  "Alberca Resbaladilla",
+  "Bubble House",
+  "Castillo Alberca",
+  "Castillo Premium",
+  "Inflable Castillo",
+  "Pista RC",
+  "Pista Inflable",
+];
+
+// Clases base compartidas por todos los inputs/select/textarea
+const fieldClass =
+  "w-full px-3.5 py-2.5 rounded-lg border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors";
+const labelClass = "block text-[13px] font-semibold text-text mb-1.5";
+---
+
+<form action={formspreeEndpoint} method="POST" id="contactForm">
+  <div class="grid sm:grid-cols-2 gap-4">
+    <input
+      type="hidden"
+      name="_subject"
+      value="Nueva solicitud desde la página de contacto"
+    />
+
+    <div>
+      <label class={labelClass}>Nombre completo *</label>
+      <input type="text" name="Nombre" required class={fieldClass} />
+    </div>
+
+    <div>
+      <label class={labelClass}>Teléfono / WhatsApp *</label>
+      <input type="tel" name="Telefono" required class={fieldClass} />
+    </div>
+
+    <div>
+      <label class={labelClass}>Ubicación del evento *</label>
+      <input
+        type="text"
+        name="Ubicacion"
+        required
+        placeholder="Ej. Naucalpan, Edomex"
+        class={fieldClass}
+      />
+    </div>
+
+    <div>
+      <label class={labelClass}>Tipo de celebración</label>
+      <select name="Celebracion" class={fieldClass}>
+        {celebraciones.map((c) => <option>{c}</option>)}
+      </select>
+    </div>
+
+    <div>
+      <label class={labelClass}>¿Qué te interesa?</label>
+      <select name="Tipo" class={fieldClass}>
+        <option>Renta</option>
+        <option>Compra</option>
+        <option>Ambas</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <label class={labelClass + " mt-3"}>Servicios de interés</label>
+
+    <div class="border border-border rounded-lg p-4 max-h-64 overflow-y-auto">
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm font-semibold mb-2 text-text">Servicios de renta</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {
+              serviciosRenta.map((servicio) => (
+                <label class="flex items-center gap-2 text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="ServiciosRenta"
+                    value={servicio}
+                    class="h-4 w-4 accent-primary"
+                  />
+                  <span>{servicio}</span>
+                </label>
+              ))
+            }
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold mb-2 text-text">Servicios de venta</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {
+              serviciosVenta.map((servicio) => (
+                <label class="flex items-center gap-2 text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="ServiciosVenta"
+                    value={servicio}
+                    class="h-4 w-4 accent-primary"
+                  />
+                  <span>{servicio}</span>
+                </label>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sm:col-span-2 mt-2">
+    <label class={labelClass}>Comentarios adicionales</label>
+    <textarea
+      name="Comentarios"
+      rows="3"
+      placeholder="Cuéntanos más sobre tu evento..."
+      class={`${fieldClass} resize-none`}></textarea>
+  </div>
+
+  <div class="">
+    <button
+      type="submit"
+      class="w-full px-8 py-3 bg-cta hover:bg-cta-dk text-white font-display font-bold text-sm rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+    >
+      Solicitar cotización
+    </button>
+    <div
+      id="formMessage"
+      class="hidden text-center text-green-600 font-semibold mt-5"
+    >
+      ¡Correo enviado correctamente!
+    </div>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contactForm");
+  const message = document.querySelector<HTMLDivElement>("#formMessage");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      form.reset();
+      message?.classList.remove("hidden");
+    }
+  });
+</script>

@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import VentaHero from "../../components/venta/VentaHero.astro";
+import EspecificacionesAside from "../../components/venta/EspecificacionesAside.astro";
+import ProseContent from "../../components/venta/ProseContent.astro";
+import CTAFinal from "../../components/venta/CTAFinal.astro";
+
+
+export async function getStaticPaths() {
+  const items = await getCollection("venta");
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const whatsappMsg = encodeURIComponent(
+  `Hola, me interesa comprar el *${d.titulo}*. ¿Podrían darme más información y disponibilidad?`
+);
+const whatsappUrl = `https://wa.me/525539385685?text=${whatsappMsg}`;
+
+const dims = `${d.dimensiones.largo} × ${d.dimensiones.ancho} × ${d.dimensiones.alto} m`;
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: d.titulo,
+  description: d.description,
+  image: `https://pequenosmomentos.mx${d.imageBanner}`,
+  brand: { "@type": "Brand", name: "Pequeños Momentos" },
+  offers: {
+    "@type": "Offer",
+    url: `https://pequenosmomentos.mx/venta-de-inflables/${entry.id}`,
+    availability: "https://schema.org/InStock",
+    seller: { "@type": "Organization", name: "Pequeños Momentos" },
+  },
+};
+---
+
+<BaseLayout
+  title={`${d.metaTitle} | Pequeños Momentos`}
+  description={d.metaDescription}
+  schema={productSchema}
+  ogImage={d.imageBanner}
+>
+  <VentaHero
+    titulo={d.titulo}
+    description={d.description}
+    dims={dims}
+    material={d.material}
+    categoria={d.categoria}
+    imageBanner={d.imageBanner}
+    whatsappUrl={whatsappUrl}
+  />
+
+  <!-- Contenido editorial + aside sticky -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
+        <ProseContent>
+          <Content />
+        </ProseContent>
+
+        <EspecificacionesAside
+          dims={dims}
+          material={d.material}
+          categoria={d.categoria}
+          whatsappUrl={whatsappUrl}
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal titulo={d.titulo} whatsappUrl={whatsappUrl} />
+</BaseLayout>

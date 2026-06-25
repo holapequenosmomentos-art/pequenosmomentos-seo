@@ -1,0 +1,42 @@
+<div class="prose-content">
+  <slot />
+</div>
+
+<style>
+  @reference "../../styles/global.css";
+
+  .prose-content :global(h2) {
+    @apply font-display text-2xl font-extrabold text-text mt-10 mb-4;
+  }
+  .prose-content :global(h3) {
+    @apply font-display text-lg font-bold text-text mt-8 mb-3;
+  }
+  .prose-content :global(p) {
+    @apply text-muted leading-[1.8] mb-5 text-[0.9375rem];
+  }
+  .prose-content :global(strong) {
+    @apply text-text font-bold;
+  }
+  .prose-content :global(ul) {
+    @apply list-none p-0 mb-6 flex flex-col gap-2;
+  }
+  .prose-content :global(ul li) {
+    @apply pl-5 relative text-muted text-[0.9375rem] leading-[1.7];
+  }
+  .prose-content :global(ul li::before) {
+    content: "→";
+    @apply absolute left-0 text-primary font-bold;
+  }
+  .prose-content :global(table) {
+    @apply w-full border-collapse mb-6 text-sm;
+  }
+  .prose-content :global(th) {
+    @apply font-display font-bold text-xs uppercase tracking-wide text-muted bg-surface px-4 py-2.5 text-left border border-border;
+  }
+  .prose-content :global(td) {
+    @apply px-4 py-2.5 text-muted border border-border align-top;
+  }
+  .prose-content :global(td strong) {
+    @apply text-text;
+  }
+</style>

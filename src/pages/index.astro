@@ -1,0 +1,19 @@
+---
+import CatalogPreview from "../components/home/CatalogPreview.astro";
+import SocialProof from "../components/home/SocialProof.astro";
+import Hero from "../components/home/Hero.astro";
+import ServicesBar from "../components/home/ServicesBar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Renta de Inflables para Fiestas Infantiles en CDMX y Estado de México | Pequeños Momentos"
+  description="Renta y venta de inflables para fiestas infantiles en CDMX y Estado de México. Castillos, albercas de pelotas, toboganes. Entrega e instalación incluida. Cotiza por WhatsApp."
+  ogImage="/og-home.jpg"
+>
+  <Hero />
+  <ServicesBar />
+  <CatalogPreview type="renta"/>
+  <CatalogPreview type="venta"/>
+  <SocialProof/>
+</BaseLayout>

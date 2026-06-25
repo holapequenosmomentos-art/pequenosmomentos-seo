@@ -1,0 +1,522 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { eventos, formatFecha } from "../data/eventos.ts";
+import { Image } from "astro:assets";
+
+const whatsappUrl =
+  "https://wa.me/525539385685?text=Hola%2C%20vi%20su%20galer%C3%ADa%20y%20me%20interesa%20cotizar%20un%20evento%20similar.%20%C2%BFPueden%20asesorarme%3F";
+
+const eventosOrdenados = [...eventos].sort(
+  (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime(),
+);
+
+const servicios = [
+  "Todos",
+  ...new Set(eventos.flatMap((e) => e.serviciosIncluidos)),
+];
+
+const stats = [
+  { valor: `+${eventos.length * 10}`, label: "Eventos realizados" },
+  { valor: "+5 años", label: "De experiencia" },
+  { valor: "CDMX", label: "y Estado de México" },
+];
+---
+
+<BaseLayout
+  title="Galería de Eventos — Inflables para Fiestas Infantiles en CDMX | Pequeños Momentos"
+  description="Galería de eventos realizados con renta de inflables en CDMX y Estado de México. Fiestas infantiles, brunchs, eventos temáticos. Cotiza tu evento por WhatsApp."
+  ogImage="/og-galeria.jpg"
+>
+  <!-- ══════════════════════════════════════════════════
+       HERO — mismo sistema CatalogHero
+  ══════════════════════════════════════════════════ -->
+  <section
+    class="relative overflow-hidden bg-surface pt-10 pb-16 md:pt-14 md:pb-20 h-screen items-center flex"
+  >
+    <div
+      class="pointer-events-none absolute -top-24 -right-32 w-130 h-130 rounded-full bg-primary/10"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-24 -left-32 w-130 h-130 rounded-full bg-primary/10"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="max-w-300 mx-auto px-5 md:px-10 relative">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-[13px] text-muted flex-wrap">
+          <li>
+            <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+          </li>
+          <li aria-hidden="true"><span class="text-light">/</span></li>
+          <li class="text-text font-medium">Galería</li>
+        </ol>
+      </nav>
+
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <!-- Columna texto -->
+        <div>
+          <p
+            class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-3"
+          >
+            Casos de éxito · CDMX y Estado de México
+          </p>
+
+          <h1
+            class="font-display text-4xl md:text-5xl font-extrabold text-text leading-[1.1] mb-5"
+          >
+            Eventos que<br />
+            <span class="relative inline-block">
+              hemos creado
+              <svg
+                class="absolute left-0 -bottom-1 w-full h-3"
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 9 Q 50 1, 100 7 T 198 5"
+                  stroke="var(--color-cta)"
+                  stroke-width="6"
+                  fill="none"
+                  stroke-linecap="round"></path>
+              </svg>
+            </span>
+          </h1>
+
+          <p class="text-muted text-base leading-relaxed mb-6 max-w-115">
+            Cada evento es único. Aquí algunos de los momentos que hemos creado
+            junto a nuestros clientes.
+            <span class="font-semibold text-text">
+              {eventosOrdenados.length} eventos</span
+            > documentados y contando.
+          </p>
+
+          <!-- Stats como badges — igual al CatalogHero -->
+          <ul class="flex flex-wrap gap-2 mb-7">
+            {
+              stats.map(({ valor, label }) => (
+                <li class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-display font-semibold text-text shadow-sm border border-border">
+                  <span class="font-extrabold text-primary">{valor}</span>
+                  <span class="text-muted">{label}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <!-- CTA dual -->
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#eventos-grid"
+              class="inline-flex items-center gap-2 px-7 py-3.5 bg-cta hover:bg-cta-dk text-white font-display font-bold text-sm rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+            >
+              Ver todos los eventos
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+              >
+            </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-surface border-2 border-primary text-primary font-display font-bold text-sm rounded-xl transition-all duration-200"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+                ></path></svg
+              >
+              Cotizar mi evento
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna collage — 2 fotos apiladas con overlap -->
+        <div class="relative h-80 md:h-96 hidden sm:block" aria-hidden="true">
+          {
+            eventosOrdenados[0]?.video && (
+              <div class="absolute top-0 right-0 w-[72%] aspect-[4/3] rounded-2xl overflow-hidden ring-4 ring-white shadow-xl">
+                <video
+                  src={eventosOrdenados[0].video}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )
+          }
+
+          {
+            eventosOrdenados[1]?.video && (
+              <div class="absolute bottom-0 left-0 w-[60%] aspect-[4/3] rounded-2xl overflow-hidden ring-4 ring-white shadow-xl">
+                <video
+                  src={eventosOrdenados[1].video}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )
+          }
+          <!-- Floating badge contador -->
+          <div
+            class="absolute bottom-[30%] right-[18%] inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full shadow-md text-[13px] font-display font-bold text-text z-10"
+          >
+            <span class="w-2 h-2 rounded-full bg-cta"></span>
+            {eventosOrdenados.length} eventos documentados
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       FILTROS + GRID
+  ══════════════════════════════════════════════════ -->
+  <section class="py-12 md:py-16" id="eventos-grid-section">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <!-- Intro SEO de la sección -->
+      <div class="relative overflow-hidden mb-12">
+        <!-- Fondo decorativo -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-primary/10 via-white to-cta/10 rounded-3xl"
+        >
+        </div>
+
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-cta/10 rounded-full blur-3xl"
+        >
+        </div>
+
+        <div
+          class="relative p-8 md:p-10 border border-border rounded-3xl bg-white/80 backdrop-blur-sm"
+        >
+          <span
+            class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary font-display font-bold text-xs uppercase tracking-wider rounded-full mb-4"
+          >
+            🎈 Galería de eventos reales
+          </span>
+
+          <h2
+            class="font-display text-3xl md:text-4xl font-extrabold text-text leading-tight mb-4"
+          >
+            Eventos recientes con
+            <span class="text-primary">renta de inflables </span>
+            en CDMX y Estado de México
+          </h2>
+
+          <p class="text-muted text-lg leading-relaxed max-w-4xl mb-6">
+            Descubre algunos de los cumpleaños infantiles, brunchs familiares,
+            bautizos y eventos temáticos donde hemos llevado
+            <strong class="text-text">
+              castillos inflables, albercas de pelotas y zonas de juego</strong
+            >. Cada montaje es personalizado para crear experiencias únicas y
+            memorables.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold"
+            >
+              🎂 Fiestas infantiles
+            </span>
+
+            <span
+              class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold"
+            >
+              🏰 Castillos inflables
+            </span>
+
+            <span
+              class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold"
+            >
+              🎉 Eventos temáticos
+            </span>
+
+            <span
+              class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold"
+            >
+              📍 CDMX y Estado de México
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <ul
+        id="eventos-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        aria-label="Galería de eventos"
+      >
+        {
+          eventosOrdenados.map((evento) => {
+            const { mes, dia } = formatFecha(evento.fecha);
+            const tieneVideo = !!evento.video;
+
+            return (
+              <li
+                class="evento-card"
+                data-servicios={JSON.stringify(evento.serviciosIncluidos)}
+              >
+                <article class="group flex flex-col bg-white rounded-2xl overflow-hidden border border-border shadow-[0_2px_16px_rgba(155,93,229,0.07)] hover:shadow-[0_8px_32px_rgba(155,93,229,0.15)] hover:-translate-y-1.5 transition-all duration-300 h-full">
+                  <div class="relative overflow-hidden bg-surface">
+                    {tieneVideo ? (
+                      <div class="relative">
+                        <video
+                          src={evento.video}
+                          muted
+                          playsinline
+                          loop
+                          preload="auto"
+                          class="evento-video w-full aspect-video object-cover"
+                          aria-label={`Video del evento ${evento.nombre}`}
+                        />
+                        <div class="video-hint absolute bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white text-[11px] font-display font-bold transition-opacity duration-200 group-hover:opacity-0 pointer-events-none whitespace-nowrap">
+                          <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 3l14 9-14 9V3z" />
+                          </svg>
+                          Pasa el mouse para ver el video
+                        </div>
+                      </div>
+                    ) : evento.imagen ? (
+                      <Image
+                        src={evento.imagen}
+                        alt={evento.nombre}
+                        width="600"
+                        height="400"
+                        loading="lazy"
+                        class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div class="w-full aspect-video flex items-center justify-center text-light">
+                        <svg
+                          width="40"
+                          height="40"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          aria-hidden="true"
+                        >
+                          <rect x="3" y="3" width="18" height="18" rx="2" />
+                          <circle cx="8.5" cy="8.5" r="1.5" />
+                          <path d="m21 15-5-5L5 21" />
+                        </svg>
+                      </div>
+                    )}
+
+                    {evento.tematica && (
+                      <span class="absolute top-3 left-3 inline-block px-2.5 py-1 bg-primary/90 backdrop-blur-sm text-white rounded-full text-[11px] font-display font-bold">
+                        {evento.tematica}
+                      </span>
+                    )}
+
+                    <div class="absolute top-3 right-3 flex flex-col items-center px-2.5 py-1.5 bg-white rounded-xl shadow-sm min-w-[44px]">
+                      <span class="font-display font-bold text-[10px] text-primary leading-none tracking-wider uppercase">
+                        {mes}
+                      </span>
+                      <span class="font-display font-extrabold text-base text-text leading-tight">
+                        {dia}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col flex-1 p-5">
+                    <h2 class="font-display font-bold text-base text-text leading-snug mb-2">
+                      {evento.nombre}
+                    </h2>
+                    <p class="text-[13px] text-muted leading-relaxed mb-4 flex-1">
+                      {evento.descripcion}
+                    </p>
+
+                    <div class="flex items-center gap-1.5 text-[13px] text-muted mb-3">
+                      <svg
+                        class="shrink-0 text-primary"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <>
+                          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                          <circle cx="12" cy="10" r="3" />
+                        </>
+                      </svg>
+                      <span>{evento.ubicacion}</span>
+                    </div>
+
+                    <div class="pt-3 border-t border-border">
+                      <p class="text-[11px] font-bold font-display text-text uppercase tracking-wide mb-2">
+                        Servicios incluidos
+                      </p>
+                      <div class="flex flex-wrap gap-1.5">
+                        {evento.serviciosIncluidos.map((s) => (
+                          <span class="inline-block px-2.5 py-1 bg-primary/8 text-primary text-[11px] font-display font-bold rounded-full">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <!-- Estado vacío -->
+      <div
+        id="empty-state"
+        class="hidden flex-col items-center justify-center py-24 text-center"
+      >
+        <p class="text-4xl mb-4">🎈</p>
+        <p class="font-display font-bold text-lg text-text mb-2">
+          Sin eventos con este servicio
+        </p>
+        <p class="text-sm text-muted mb-6">
+          Prueba con otro filtro o cotiza directamente
+        </p>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-cta hover:bg-cta-dk text-white font-display font-bold text-sm rounded-xl transition-colors"
+        >
+          Cotizar mi evento
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CTA FINAL
+  ══════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden bg-primary py-16 md:py-20">
+    <div
+      class="pointer-events-none absolute -top-24 -right-32 w-130 h-130 rounded-full bg-white/10"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-24 -left-32 w-130 h-130 rounded-full bg-white/10"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="max-w-[640px] mx-auto px-5 md:px-10 text-center relative">
+      <p
+        class="font-display text-[13px] font-bold uppercase tracking-widest text-white/60 mb-3"
+      >
+        ¿Listo para crear el tuyo?
+      </p>
+      <h2
+        class="font-display text-3xl md:text-4xl font-extrabold text-white leading-[1.15] mb-4"
+      >
+        ¿Quieres resultados así<br />en tu evento?
+      </h2>
+      <p class="text-white/70 text-base mb-8 leading-relaxed">
+        Cuéntanos tu idea y te ayudamos a hacerla realidad en CDMX o Estado de
+        México.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_20px_rgba(0,200,150,0.4)] hover:-translate-y-px transition-all duration-200"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            ><path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+            ></path></svg
+          >
+          Cotizar mi evento por WhatsApp
+        </a>
+        <a
+          href="/renta-de-inflables"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white/15 hover:bg-white/25 text-white font-display font-bold text-base rounded-xl border border-white/30 transition-all duration-200"
+        >
+          Ver inflables en renta
+        </a>
+      </div>
+      <ul class="flex flex-wrap justify-center gap-4 mt-6">
+        {
+          [
+            "Sin costo",
+            "Respuesta en menos de 1 hora",
+            "CDMX y Estado de México",
+          ].map((c) => (
+            <li class="text-[12px] font-semibold text-white/50">{c}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document
+    .querySelectorAll<HTMLVideoElement>(".evento-video")
+    .forEach((video) => {
+      const paintFirstFrame = () => {
+        video.currentTime = 0.1;
+      };
+      video.addEventListener("loadeddata", paintFirstFrame, { once: true });
+      const article = video.closest("article");
+      if (!article) return;
+      const playVideo = () => {
+        video.play().catch(() => {});
+      };
+      const pauseVideo = () => {
+        video.pause();
+        video.currentTime = 0.1;
+      };
+      article.addEventListener("mouseenter", playVideo);
+      article.addEventListener("mouseleave", pauseVideo);
+      article.addEventListener("click", () => {
+        if (video.paused) playVideo();
+        else pauseVideo();
+      });
+    });
+</script>

@@ -1,0 +1,151 @@
+---
+import { getCollection } from "astro:content";
+import RentaCard from "../cards/RentaCard.astro";
+import VentaCard from "../cards/VentaCard.astro";
+
+interface Props {
+  type: "renta" | "venta";
+  limit?: number;
+}
+
+const { type, limit = 8 } = Astro.props;
+const isRenta = type === "renta";
+
+const rentaItems = isRenta
+  ? (await getCollection("renta"))
+      .filter((e) => e.data.disponibilidad)
+      .slice(0, limit)
+  : [];
+
+const ventaItems = !isRenta
+  ? (await getCollection("venta")).slice(0, limit)
+  : [];
+
+const config = {
+  renta: {
+    eyebrow: "Catálogo de renta",
+    title: "Inflables en renta",
+    desc: "Entrega, instalación y retiro incluidos en CDMX y Estado de México.",
+    ctaLabel: "Ver todos los inflables en renta",
+    ctaHref: "/renta-de-inflables",
+    badgeColor: "bg-white/80 text-[var(--color-cta-dk)]",
+    accentColor: "bg-[var(--color-cta)]",
+    chips: [
+      { icon: "🚚", label: "Entrega incluida" },
+      { icon: "⚡", label: "Instalación rápida" },
+      { icon: "✅", label: "Disponibilidad inmediata" },
+    ],
+  },
+  venta: {
+    eyebrow: "Catálogo de venta",
+    title: "Inflables en venta",
+    desc: "Para salones de fiestas, guarderías y negocios de entretenimiento infantil.",
+    ctaLabel: "Ver todos los inflables en venta",
+    ctaHref: "/venta-de-inflables",
+    badgeColor: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
+    accentColor: "bg-[var(--color-primary)]",
+    chips: [
+      { icon: "🏭", label: "Fabricación propia" },
+      { icon: "🛡️", label: "Garantía incluida" },
+      { icon: "📦", label: "Envío a toda la república" },
+    ],
+  },
+}[type];
+
+const hasItems = isRenta ? rentaItems.length > 0 : ventaItems.length > 0;
+---
+
+<section
+  class:list={["py-20 md:py-10", isRenta ? "bg-white" : "bg-surface"]}
+  aria-label={config.title}
+>
+  <div class="max-w-300 mx-auto px-5 md:px-10">
+
+    <!-- Encabezado -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {isRenta ? (
+                <>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                  <path d="M8 12l3 3 5-5" />
+                </>
+              ) : (
+                <>
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 0 1-8 0" />
+                </>
+              )}
+            </svg>
+          </span>
+          <p class="font-display text-[13px] font-bold uppercase tracking-[0.12em] text-primary">
+            {config.eyebrow}
+          </p>
+        </div>
+
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text leading-tight">
+          {isRenta ? "🎪 " : "🎠 "}{config.title}
+        </h2>
+
+        <p class="text-muted mt-2 max-w-130">{config.desc}</p>
+
+        <div class="flex flex-wrap gap-2 mt-3">
+          {config.chips.map(({ icon, label }) => (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/8 text-primary text-[11px] font-display font-bold border border-primary/15">
+              <span aria-hidden="true">{icon}</span>
+              {label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href={config.ctaHref}
+        class="shrink-0 group/cta inline-flex items-center gap-2.5 px-5 py-3 rounded-xl font-display font-bold text-sm transition-all duration-200 border-2 border-primary text-primary hover:bg-primary hover:text-white"
+      >
+        {config.ctaLabel}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform duration-200 group-hover/cta:translate-x-1">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Grid de cards -->
+    {hasItems ? (
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {isRenta
+          ? rentaItems.map((item) => (
+              <RentaCard item={item} badgeColor={config.badgeColor} accentColor={config.accentColor} />
+            ))
+          : ventaItems.map((item) => <VentaCard item={item} />)}
+      </ul>
+    ) : (
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {Array.from({ length: limit }).map(() => (
+          <li class="h-72 rounded-2xl bg-surface border border-border animate-pulse" />
+        ))}
+      </ul>
+    )}
+
+    <div class="mt-10 text-center">
+      <a
+        href={config.ctaHref}
+        class:list={[
+          "inline-flex items-center gap-2 px-8 py-4 font-display font-bold text-base rounded-xl transition-all duration-200",
+          isRenta
+            ? "bg-cta hover:bg-cta-dk text-white shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px"
+            : "bg-primary hover:bg-primary-dk text-white shadow-[0_4px_14px_rgba(155,93,229,0.3)] hover:-translate-y-px",
+        ]}
+      >
+        {config.ctaLabel}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,32 @@
+---
+const zonasCDMX = ["Gustavo A. Madero", "Azcapotzalco", "Miguel Hidalgo", "Cuauhtémoc", "Venustiano Carranza", "Iztapalapa", "Iztacalco", "Álvaro Obregón"];
+const zonasEdomex = ["Nicolás Romero", "Naucalpan de Juárez", "Tlalnepantla de Baz", "Cuautitlán Izcalli", "Cuautitlán", "Tepotzotlán", "Tultepec", "Tultitlán", "Atizapán de Zaragoza", "Huixquilucan"];
+
+const enlaces = [
+  { href: "/renta-de-inflables", label: "Renta de inflables" },
+  { href: "/venta-de-inflables", label: "Venta de inflables" },
+  { href: "/inflables-para-eventos", label: "Inflables para eventos" },
+  { href: "/galeria", label: "Galería de eventos" },
+  { href: "/contacto", label: "Contacto" },
+];
+---
+
+<div class="border-t border-border bg-white py-7">
+  <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+    <nav aria-label="Enlaces del sitio" class="flex flex-wrap gap-x-5 gap-y-1.5 mb-4">
+      {enlaces.map(({ href, label }) => (
+        <a href={href} class="text-[12px] text-muted hover:text-primary transition-colors">{label}</a>
+      ))}
+    </nav>
+
+    <p class="text-[11px] font-bold uppercase tracking-wide text-light mb-1">
+      Cobertura · Ciudad de México
+    </p>
+    <p class="text-[12px] text-light leading-relaxed mb-3">{zonasCDMX.join(" · ")}</p>
+
+    <p class="text-[11px] font-bold uppercase tracking-wide text-light mb-1">
+      Cobertura · Estado de México
+    </p>
+    <p class="text-[12px] text-light leading-relaxed">{zonasEdomex.join(" · ")}</p>
+  </div>
+</div>

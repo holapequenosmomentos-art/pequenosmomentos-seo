@@ -1,0 +1,117 @@
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/500.css";
+@import "@fontsource/nunito/600.css";
+@import "@fontsource/nunito/700.css";
+@import "@fontsource/nunito/800.css";
+
+@import "tailwindcss";
+
+@theme {
+  /* Fuentes */
+  --font-display: "Nunito", sans-serif;
+  --font-body: "Nunito", sans-serif;
+
+  /* Colores marca */
+  --color-primary: #9b5de5;
+  --color-primary-dk: #7a3fbf;
+  --color-accent: #f15bb5;
+  --color-cta: #00c896;
+  --color-cta-dk: #00a87d;
+
+  /* Superficies */
+  --color-surface: #f9f7ff;
+  --color-border: #e8e2f5;
+
+  /* Texto */
+  --color-text: #1a1028;
+  --color-muted: #6b5f82;
+  --color-light: #9e94b0;
+
+  /* Footer */
+  --color-footer-bg: #120b1e;
+  --color-footer-deep: #0d0818;
+
+  /* Radios extra */
+  --radius-xl: 32px;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply antialiased;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Animación del punto de disponibilidad */
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 200, 150, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 5px rgba(0, 200, 150, 0);
+    }
+  }
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse-dot {
+      animation: none;
+    }
+  }
+}

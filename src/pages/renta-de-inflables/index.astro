@@ -1,0 +1,156 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CatalogHero from "../../components/shared/Hero.astro";
+import RentaCard from "../../components/cards/RentaCard.astro";
+
+const todos = await getCollection("renta");
+
+// Ordenar: disponibles primero, luego por título
+const inflables = todos.sort((a, b) => {
+  if (a.data.disponibilidad === b.data.disponibilidad) {
+    return a.data.shortTitle.localeCompare(b.data.shortTitle, "es");
+  }
+  return a.data.disponibilidad ? -1 : 1;
+});
+
+// Categorías únicas presentes en el catálogo
+const categorias = [
+  "Todos",
+  ...new Set(inflables.map((i) => i.data.categoria)),
+];
+
+const whatsappUrl =
+  "https://wa.me/525539385685?text=Hola%2C%20quiero%20cotizar%20un%20inflable%20para%20mi%20evento";
+---
+
+<BaseLayout
+  title="Renta de Inflables para Fiestas Infantiles en CDMX y Estado de México | Pequeños Momentos"
+  description="Catálogo completo de renta de inflables en CDMX y Estado de México. Castillos, albercas de pelotas, toboganes y más. Entrega e instalación incluida. Cotiza por WhatsApp."
+  ogImage="/og-renta.jpg"
+>
+  <CatalogHero type="renta" items={inflables} whatsappUrl={whatsappUrl} />
+
+  <!-- ── Filtros + Grid ────────────────────────────────────────── -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <!-- Encabezado SEO mejorado -->
+      <div class="mb-10 flex flex-col gap-3">
+        <!-- Eyebrow label -->
+        <span
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cta-dk"
+        >
+          <span class="w-6 h-0.5 bg-cta rounded-full"></span>
+          CDMX y Estado de México
+          <span class="w-6 h-0.5 bg-cta rounded-full"></span>
+        </span>
+
+        <!-- Título principal -->
+        <h2
+          class="font-display text-2xl md:text-4xl font-extrabold text-text leading-tight"
+        >
+          Catálogo de inflables
+          <span class="text-cta-dk"> en renta</span>
+        </h2>
+
+        <!-- Descripción + chips -->
+        <p class="text-muted max-w-140 text-sm md:text-base leading-relaxed">
+          Entrega, instalación y retiro incluidos. Ideal para organizadores de
+          eventos, salones de fiestas y coordinadores de festivales.
+        </p>
+
+        <!-- Feature chips -->
+        <ul class="flex flex-wrap gap-2 mt-1" aria-hidden="true">
+          {
+            [
+              "✓ Instalación incluida",
+              "✓ Limpieza garantizada",
+              "✓ Apartas con anticipo",
+              "✓ +16 modelos disponibles",
+            ].map((chip) => (
+              <li class="text-xs font-semibold px-3 py-1 rounded-full bg-cta/10 text-cta-dk border border-cta/20">
+                {chip}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contador de resultados -->
+      <p id="results-count" class="text-sm text-muted mb-6">
+        <!-- Grid -->
+        <ul
+          id="catalog-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
+          aria-label="Catálogo de inflables en renta"
+        >
+          {
+            inflables.map((item) => (
+              <RentaCard
+                item={item}
+                badgeColor="bg-white/90 text-[var(--color-cta-dk)]"
+                accentColor="bg-[var(--color-cta)]"
+              />
+            ))
+          }
+        </ul>
+      </p>
+    </div>
+
+    <!-- ── Renta sin preocupaciones (objeciones reales) ─────────────── -->
+    <section class="bg-surface border-y border-border py-14 md:py-16">
+      <div class="max-w-300 mx-auto px-5 md:px-10">
+        <div class="text-center mb-10">
+          <h2
+            class="font-display text-2xl md:text-3xl font-extrabold text-text mb-2"
+          >
+            Renta sin preocupaciones
+          </h2>
+          <p class="text-muted max-w-120 mx-auto">
+            Sabemos qué dudas surgen al rentar un inflable. Aquí las resolvemos
+            antes de que cotices.
+          </p>
+        </div>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            [
+              {
+                icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`,
+                title: "Inflables asegurados",
+                desc: "Equipo certificado y revisado antes de cada evento para que tu fiesta sea segura.",
+              },
+              {
+                icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 8.5a3.5 3.5 0 0 0 5 5L14 11"/><path d="m17 14 4 4-3 3-4-4"/><circle cx="6" cy="18" r="2"/></svg>`,
+                title: "Limpieza garantizada",
+                desc: "Lavamos y desinfectamos cada inflable después de cada uso, antes de llegar a tu evento.",
+              },
+              {
+                icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>`,
+                title: "Apartas con anticipo",
+                desc: "Solo necesitas un anticipo para asegurar tu fecha. Sin pagos ocultos ni sorpresas.",
+              },
+              {
+                icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v8h8"/></svg>`,
+                title: "Cambios sin complicaciones",
+                desc: "¿Tuviste que mover tu fecha? Te ayudamos a reprogramar sin dolores de cabeza.",
+              },
+            ].map(({ icon, title, desc }) => (
+              <li class="flex flex-col gap-3 bg-white rounded-2xl p-5 border border-border">
+                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-cta/10 text-cta-dk">
+                  <Fragment set:html={icon} />
+                </div>
+                <div>
+                  <p class="font-display font-bold text-sm text-text leading-tight mb-1">
+                    {title}
+                  </p>
+                  <p class="text-[13px] text-muted leading-relaxed">{desc}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </section>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DetailHero from "../../components/renta/DetailHero.astro";
+import ProseContent from "../../components/renta/ProseContent.astro";
+import ResumenAside from "../../components/renta/ResumenAside.astro";
+import RequisitosGrid from "../../components/renta/RequisitosGrid.astro";
+import FAQAccordion from "../../components/renta/FAQAccordion.astro";
+import CTAFinal from "../../components/renta/CTAFinal.astro";
+
+
+export async function getStaticPaths() {
+  const items = await getCollection("renta");
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const whatsappMsg = encodeURIComponent(
+  `Hola, quiero cotizar la *${d.titulo}* para mi evento. ¿Tienen disponibilidad?`
+);
+const whatsappUrl = `https://wa.me/525539385685?text=${whatsappMsg}`;
+
+const faqSchema = d.faqs.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: d.faqs.map(({ pregunta, respuesta }) => ({
+        "@type": "Question",
+        name: pregunta,
+        acceptedAnswer: { "@type": "Answer", text: respuesta },
+      })),
+    }
+  : undefined;
+---
+
+<BaseLayout
+  title={`${d.titulo} | Pequeños Momentos`}
+  description={d.metaDescription}
+  schema={faqSchema}
+  ogImage={d.imageBanner}
+>
+  <DetailHero
+    titulo={d.titulo}
+    shortTitle={d.shortTitle}
+    description={d.description}
+    duration={d.duration}
+    categoria={d.categoria}
+    disponibilidad={d.disponibilidad}
+    video={d.video}
+    imageBanner={d.imageBanner}
+    whatsappUrl={whatsappUrl}
+  />
+
+  <!-- Contenido editorial + aside sticky -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
+        <ProseContent>
+          <Content />
+        </ProseContent>
+
+        <ResumenAside
+          
+      
+          disponibilidad={d.disponibilidad}
+          whatsappUrl={whatsappUrl}
+        />
+      </div>
+    </div>
+  </section>
+
+  <RequisitosGrid requisitos={d.requisitos} />
+
+  <FAQAccordion faqs={d.faqs} whatsappUrl={whatsappUrl} withSidebar={true} />
+
+  <CTAFinal shortTitle={d.shortTitle} whatsappUrl={whatsappUrl} />
+</BaseLayout>

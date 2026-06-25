@@ -1,0 +1,388 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RentaCard from "../components/cards/RentaCard.astro";
+
+
+
+const rentaItems = (await getCollection("renta"))
+  .filter((i) => i.data.disponibilidad)
+  .slice(0, 6);
+
+const whatsappUrl =
+  "https://wa.me/525539385685?text=Hola%2C%20me%20interesa%20contratar%20inflables%20para%20un%20evento.%20%C2%BFPodr%C3%ADan%20asesorarme%3F";
+
+const perfiles = [
+  {
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    titulo: "Salones de fiestas",
+    desc: "Complementa tu oferta con inflables de alta rotación. Conviértete en el salón que tiene todo, sin invertir en equipo propio.",
+    color: "primary",
+  },
+  {
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    titulo: "Organizadores de eventos",
+    desc: "Proveedor confiable con puntualidad garantizada. Coordina la logística por WhatsApp y enfócate en tu cliente.",
+    color: "cta",
+  },
+  {
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    titulo: "Guarderías y colegios",
+    desc: "Días del niño, kermeses y festivales escolares con instalación segura y retiro puntual. Sin complicaciones para tu personal.",
+    color: "primary",
+  },
+  {
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    titulo: "Empresas con eventos familiares",
+    desc: "Convivios, posadas y activaciones donde los niños también importan. Nos adaptamos a tus espacios y horarios corporativos.",
+    color: "cta",
+  },
+];
+
+const colorClasses: Record<string, { bg: string; text: string; border: string }> = {
+  primary: {
+    bg: "bg-[var(--color-primary)]/12",
+    text: "text-[var(--color-primary)]",
+    border: "hover:border-[var(--color-primary)]/40 hover:shadow-[0_4px_24px_rgba(155,93,229,0.12)]",
+  },
+  cta: {
+    bg: "bg-[var(--color-cta)]/12",
+    text: "text-[var(--color-cta-dk)]",
+    border: "hover:border-[var(--color-cta)]/40 hover:shadow-[0_4px_24px_rgba(0,200,150,0.12)]",
+  },
+};
+
+const pasos = [
+  {
+    num: "01",
+    titulo: "Cotiza por WhatsApp",
+    desc: "Cuéntanos la fecha, el lugar y cuántos niños esperan. Te respondemos en menos de 1 hora con opciones y disponibilidad.",
+  },
+  {
+    num: "02",
+    titulo: "Confirmamos tu fecha",
+    desc: "Apartamos el equipo con tu confirmación. Sin papeleo complicado — todo se coordina directo por WhatsApp.",
+  },
+  {
+    num: "03",
+    titulo: "Llegamos y montamos",
+    desc: "Llegamos entre 45 y 60 minutos antes de tu evento, instalamos todo y al terminar recogemos sin que tengas que preocuparte por nada.",
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Manejan contratos o acuerdos para proveedores recurrentes?",
+    respuesta: "Sí, si eres salón de fiestas u organizador con eventos frecuentes podemos establecer condiciones preferenciales. Escríbenos para hablar sobre tu modelo de negocio.",
+  },
+  {
+    pregunta: "¿Qué zonas de CDMX y Estado de México cubren?",
+    respuesta: "Cubrimos toda la zona metropolitana: Nicolás Romero, Naucalpan, Tlalnepantla, Cuautitlán Izcalli, Atizapán, Tultepec, Tultitlán, Huixquilucan y las alcaldías de CDMX como Gustavo A. Madero, Azcapotzalco, Miguel Hidalgo y más.",
+  },
+  {
+    pregunta: "¿Con cuánto tiempo de anticipación debo reservar?",
+    respuesta: "Recomendamos mínimo 5 días para fines de semana. En temporada alta (diciembre, Semana Santa, vacaciones de verano) sugerimos reservar con 2 semanas de anticipación.",
+  },
+  {
+    pregunta: "¿Qué incluye el servicio de renta?",
+    respuesta: "Traslado de ida y vuelta, instalación completa, supervisión opcional y retiro al finalizar el tiempo contratado. No hay costos ocultos.",
+  },
+  {
+    pregunta: "¿Pueden instalar en interiores?",
+    respuesta: "Sí, siempre que el espacio tenga el área mínima requerida por cada inflable y acceso a una toma de corriente. Consúltanos con las medidas de tu espacio y te confirmamos.",
+  },
+  {
+    pregunta: "¿Qué pasa si necesito cancelar o cambiar la fecha?",
+    respuesta: "Entendemos que los eventos pueden cambiar. Contáctanos con la mayor anticipación posible y coordinamos una reagendación sin complicaciones.",
+  },
+];
+
+const zonasCDMX = [
+  "Gustavo A. Madero", "Azcapotzalco", "Miguel Hidalgo", "Cuauhtémoc",
+  "Venustiano Carranza", "Iztapalapa", "Iztacalco", "Álvaro Obregón",
+  "Coyoacán", "Benito Juárez", "Xochimilco", "Tlalpan",
+];
+const zonasEdomex = [
+  "Nicolás Romero", "Naucalpan de Juárez", "Tlalnepantla de Baz",
+  "Cuautitlán Izcalli", "Cuautitlán", "Tepotzotlán", "Tultepec",
+  "Tultitlán", "Atizapán de Zaragoza", "Huixquilucan", "Lerma", "Toluca",
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ pregunta, respuesta }) => ({
+    "@type": "Question",
+    name: pregunta,
+    acceptedAnswer: { "@type": "Answer", text: respuesta },
+  })),
+};
+---
+
+<BaseLayout
+  title="Inflables para Eventos en CDMX y Estado de México | Pequeños Momentos"
+  description="Renta de inflables para eventos, salones de fiestas, guarderías y organizadores en CDMX y Estado de México. Entrega, instalación y retiro incluidos. Cotiza por WhatsApp."
+  schema={faqSchema}
+  ogImage="/og-eventos.jpg"
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section class="relative bg-surface pt-14 pb-24 overflow-hidden h-screen flex items-center">
+    <div class="absolute -top-32 -right-20 w-125 h-125 bg-primary/10 rounded-full  pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-20 -left-20 w-100 h-100 bg-cta/8 rounded-full pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-[13px] text-muted">
+          <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+          <li aria-hidden="true"><span class="text-light">/</span></li>
+          <li class="text-text font-medium">Inflables para eventos</li>
+        </ol>
+      </nav>
+
+      <div class="max-w-180">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-4">
+          Proveedor de inflables · CDMX y Estado de México
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-text leading-[1.1] mb-5">
+          Inflables para eventos
+          <span class="relative inline-block text-primary">
+            infantiles y familiares
+            <svg class="absolute left-0 -bottom-1 w-full h-3" viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 9 Q 80 1, 160 7 T 318 5" stroke="var(--color-cta)" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </h1>
+        <p class="text-base md:text-lg text-muted leading-relaxed mb-8 max-w-145">
+          Proveedor confiable para salones de fiestas, organizadores, guarderías y empresas en CDMX y Estado de México.
+          Entrega, instalación y retiro incluidos. Sin complicaciones.
+        </p>
+
+        <ul class="flex flex-wrap gap-3 mb-10">
+          {[
+            { val: "+500", label: "eventos realizados" },
+            { val: "+5 años", label: "de experiencia" },
+            { val: "2 estados", label: "de cobertura" },
+          ].map(({ val, label }) => (
+            <li class="flex items-center gap-2 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_2px_12px_rgba(155,93,229,0.08)]">
+              <span class="font-display font-extrabold text-primary text-lg leading-none">{val}</span>
+              <span class="text-[13px] text-muted">{label}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Cotizar mi evento
+          </a>
+          <a
+            href="/renta-de-inflables"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-display font-bold text-base rounded-xl transition-all duration-200"
+          >
+            Ver catálogo completo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-14 bg-white [clip-path:polygon(0_100%,100%_0,100%_100%)]" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── Para quién es ─────────────────────────────────────────── -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Ideal para</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text">¿Para quién es este servicio?</h2>
+      </div>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {perfiles.map(({ icon, titulo, desc, color }) => {
+          const c = colorClasses[color];
+          return (
+            <li class:list={["flex flex-col p-6 bg-surface rounded-2xl border border-border transition-all duration-200", c.border]}>
+              <div class:list={["flex items-center justify-center w-14 h-14 rounded-2xl mb-5", c.bg, c.text]}>
+                <Fragment set:html={icon} />
+              </div>
+              <h3 class="font-display font-bold text-base text-text mb-2">{titulo}</h3>
+              <p class="text-sm text-muted leading-relaxed">{desc}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Cómo funciona ─────────────────────────────────────────── -->
+  <section class="py-20 md:py-24 bg-surface">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Proceso simple</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text">Cómo funciona</h2>
+        <p class="text-muted mt-3 max-w-120 mx-auto">Sin formularios complicados. Todo por WhatsApp en tres pasos.</p>
+      </div>
+      <ol class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <div class="hidden md:block absolute top-8 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] h-px bg-border" aria-hidden="true"></div>
+
+        {pasos.map(({ num, titulo, desc }) => (
+          <li class="flex flex-col items-center text-center relative">
+            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white font-display font-extrabold text-xl mb-5 shadow-[0_4px_20px_rgba(155,93,229,0.3)] z-10">
+              {num}
+            </div>
+            <h3 class="font-display font-bold text-lg text-text mb-2">{titulo}</h3>
+            <p class="text-sm text-muted leading-relaxed max-w-65">{desc}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-12 text-center">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Empezar ahora por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Catálogo destacado ─────────────────────────────────────── -->
+  {rentaItems.length > 0 && (
+    <section class="py-20 md:py-24 bg-white">
+      <div class="max-w-300 mx-auto px-5 md:px-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Catálogo</p>
+            <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text">Inflables más solicitados</h2>
+            <p class="text-muted mt-2">Los favoritos de organizadores y salones de fiestas en CDMX y Estado de México.</p>
+          </div>
+          <a
+            href="/renta-de-inflables"
+            class="shrink-0 inline-flex items-center gap-1.5 text-sm font-display font-bold text-primary hover:underline underline-offset-4 whitespace-nowrap"
+          >
+            Ver catálogo completo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {rentaItems.map((item) => (
+            <RentaCard
+                item={item}
+                badgeColor="bg-white/90 text-[var(--color-cta-dk)]"
+                accentColor="bg-[var(--color-cta)]"
+              />
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- ── FAQs ──────────────────────────────────────────────────── -->
+  <section class="py-20 md:py-24 bg-surface">
+    <div class="max-w-195 mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Dudas frecuentes</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text">Preguntas frecuentes</h2>
+      </div>
+      <ul class="flex flex-col gap-3" id="faq-list">
+        {faqs.map(({ pregunta, respuesta }, i) => (
+          <li class="border border-border rounded-xl overflow-hidden bg-white">
+            <button
+              class="faq-btn w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-display font-bold text-sm text-text hover:text-primary transition-colors"
+              aria-expanded="false"
+              data-index={i}
+            >
+              {pregunta}
+              <svg class="faq-icon shrink-0 transition-transform duration-200" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-body hidden px-5 pb-4">
+              <p class="text-sm text-muted leading-relaxed">{respuesta}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Cobertura SEO ─────────────────────────────────────────── -->
+  <section class="py-16 bg-white border-y border-border">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Dónde trabajamos</p>
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-text">
+          Cobertura en CDMX y Estado de México
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-200 mx-auto">
+        <div>
+          <p class="font-display text-sm font-bold text-primary uppercase tracking-wide mb-3">Ciudad de México</p>
+          <p class="text-sm text-muted leading-loose">{zonasCDMX.join(" · ")}</p>
+        </div>
+        <div>
+          <p class="font-display text-sm font-bold text-primary uppercase tracking-wide mb-3">Estado de México</p>
+          <p class="text-sm text-muted leading-loose">{zonasEdomex.join(" · ")}</p>
+        </div>
+      </div>
+      <p class="text-center text-[13px] text-light mt-8">
+        ¿Tu zona no aparece? Escríbenos — cubrimos más áreas de las que listamos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA final ─────────────────────────────────────────────── -->
+  <section class="bg-primary py-16">
+    <div class="max-w-160 mx-auto px-5 md:px-10 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-3">
+        ¿Tienes un evento próximo?
+      </h2>
+      <p class="text-white/75 mb-8 leading-relaxed">
+        Escríbenos por WhatsApp con la fecha y el lugar. Te cotizamos en menos de 1 hora sin costo ni compromiso.
+      </p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.4)] hover:-translate-y-px transition-all duration-200"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Cotizar mi evento por WhatsApp
+      </a>
+      <p class="text-white/50 text-[13px] mt-4">Sin costo · Sin compromiso · Respondemos en menos de 1 hora</p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((b) => {
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          (b.nextElementSibling as HTMLElement).classList.add('hidden');
+          (b.querySelector('.faq-icon') as HTMLElement).style.transform = '';
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      body.classList.toggle('hidden', isOpen);
+      icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+  });
+</script>
+
+</BaseLayout>

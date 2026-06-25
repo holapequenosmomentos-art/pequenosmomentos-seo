@@ -5,9 +5,12 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pequenosmomentos.mx',
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -20,4 +23,5 @@ export default defineConfig({
   },
 
   integrations: [sitemap(), compress()],
+  adapter: cloudflare(),
 });

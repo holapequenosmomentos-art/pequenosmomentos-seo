@@ -4,7 +4,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import RentaCard from "../components/cards/RentaCard.astro";
 
 
-
 const rentaItems = (await getCollection("renta"))
   .filter((i) => i.data.disponibilidad)
   .slice(0, 6);

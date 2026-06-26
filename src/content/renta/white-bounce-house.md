@@ -17,6 +17,27 @@ categoria: "Inflables"
 
 El **White Bounce House** es un castillo inflable en color blanco con un diseño limpio y moderno, pensado para celebraciones que buscan algo distinto a los inflables tradicionales de colores. Se adapta con naturalidad a decoraciones minimalistas, temáticas blancas o de tonos suaves, sin perder la diversión propia de un castillo inflable.
 
+## Antes de rentar
+
+Antes de reservar tu White Bounce House, considera estos puntos clave para garantizar una experiencia perfecta:
+
+- Verifica que el espacio disponible mida al menos 4 x 4 metros para permitir el montaje seguro y el acceso de personal
+- Confirma que haya una toma de corriente de 110V disponible a menos de 10 metros del lugar de instalación
+- Asegúrate de que la superficie sea plana, seca y libre de piedras, escombros u objetos punzocortantes
+- Considera el clima: en días de viento fuerte (más de 25 km/h), se recomienda no instalar el inflable
+- Para eventos en exteriores, verifica que el área tenga acceso vehicular para la entrega y retiro del equipo
+
+## Requisitos de instalación
+
+Para garantizar la seguridad y funcionamiento óptimo de tu White Bounce House, se requieren:
+
+- Superficie plana: pasto nivelado, concreto, loseta o madera
+- Espacio mínimo: 4 m x 4 m (incluyendo 1 metro de margen de seguridad en todos los lados)
+- Toma de corriente: 110V, 15A, ubicada a menos de 10 metros del punto de instalación
+- Acceso vehicular: para el transporte del equipo al lugar del evento
+- Temperatura ambiente: entre 10°C y 35°C
+- Supervisión: se recomienda la presencia de un adulto responsable durante todo el evento
+
 ## Características del producto
 
 Con medidas de **3 m de largo x 3.5 m de ancho x 2.9 m de altura**, ofrece un espacio cómodo para que los niños jueguen y salten, en un formato compacto que facilita su instalación incluso en espacios más reducidos que otros castillos de gran formato. Como extra opcional, se puede agregar una **guirnalda de globos decorativos**, que ayuda a personalizarlo según la paleta de cada evento y lo hace aún más fotogénico.

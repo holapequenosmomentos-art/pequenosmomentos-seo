@@ -25,6 +25,25 @@ tieneVenta: false
 
 Una opción clásica, elegante y versátil para todo tipo de eventos infantiles. Nuestro set Rejita Blanco combina con cualquier decoración, aportando un estilo limpio y armonioso al área infantil.
 
+## Antes de rentar
+
+Antes de reservar tu Rejita Blanco, considera estos puntos clave para garantizar una experiencia perfecta:
+
+- Verifica que el espacio disponible mida al menos 4 x 4 metros para acomodar el set con espacio para movimiento
+- Confirma que la superficie sea plana y nivelada para evitar riesgos de caídas
+- Asegúrate de que el área esté protegida de la lluvia si se instala en exteriores
+- Para eventos en exteriores, verifica que el área tenga acceso vehicular para la entrega y retiro del equipo
+
+## Requisitos de instalación
+
+Para garantizar la seguridad y funcionamiento óptimo de tu Rejita Blanco, se requieren:
+
+- Superficie plana: pasto nivelado, concreto, loseta o madera
+- Espacio mínimo: 4 m x 4 m (incluyendo 1 metro de margen de seguridad en todos los lados)
+- Acceso vehicular: para el transporte del equipo al lugar del evento
+- Temperatura ambiente: entre 10°C y 35°C
+- Supervisión: se recomienda la presencia de un adulto responsable durante todo el evento
+
 🎯 **Ideal para:**
 
 * Bautizos
@@ -50,6 +69,32 @@ El set Rejita Blanco es una excelente opción para:
 ## Logística de renta y entrega
 
 La renta incluye montaje del mobiliario directamente en el lugar del evento, coordinado en la zona metropolitana de la Ciudad de México y municipios del Estado de México. Recomendamos confirmar el espacio disponible y el número de niños esperados al momento de la reserva para garantizar la disponibilidad del set completo.
+
+## Preguntas frecuentes
+
+**¿El set se puede usar en interiores y exteriores?**
+
+Sí, el set Rejita Blanco es versátil y puede colocarse tanto en interiores como en exteriores, siempre que la superficie sea plana y nivelada.
+
+**¿Incluye mantelería o decoración adicional?**
+
+El set incluye únicamente las 10 sillas y la mesa infantil. La mantelería y decoración adicional se pueden cotizar por separado.
+
+**¿Puedo rentar varios sets para más niños?**
+
+Sí, puedes rentar varios sets Rejita Blanco según el número de niños esperados en tu evento.
+
+**¿El mobiliario es resistente y seguro para niños pequeños?**
+
+Sí, las sillas están diseñadas con bordes redondeados y materiales resistentes para niños de 1 a 6 años. El peso máximo recomendado por silla es de 40 kg.
+
+**¿Se puede limpiar fácilmente si se ensucia?**
+
+Sí, el mobiliario está hecho con materiales que se limpian fácilmente con paño húmedo y jabón neutro. No requiere mantenimiento especial.
+
+**¿Se pueden personalizar los colores del mobiliario?**
+
+Actualmente el set solo está disponible en color blanco. Sin embargo, podemos ofrecer opciones de personalización para grandes cantidades (más de 5 sets) con un costo adicional.
 
 🎨 **Ideal para:**
 

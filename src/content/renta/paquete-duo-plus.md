@@ -28,6 +28,27 @@ tieneVenta: false
 
 Diversión a lo grande, estilo que destaca. El Paquete Duo Plus une dos de nuestras atracciones más impactantes: el imponente Lee's Castle y la divertida Alberca de Pelotas Blanca. Juntos crean una zona de juegos inolvidable, perfecta para celebraciones con muchos pequeños invitados o donde buscas que cada rincón luzca espectacular.
 
+## Antes de rentar
+
+Antes de reservar tu Paquete Duo Plus, considera estos puntos clave para garantizar una experiencia perfecta:
+
+- Verifica que el espacio disponible mida al menos 8 x 5 metros para acomodar ambas atracciones con seguridad
+- Confirma que haya una toma de corriente de 110V disponible a menos de 10 metros del lugar de instalación
+- Asegúrate de que la superficie sea plana, seca y libre de piedras, escombros u objetos punzocortantes
+- Considera el clima: en días de viento fuerte (más de 25 km/h), se recomienda no instalar los inflables
+- Para eventos en exteriores, verifica que el área tenga acceso vehicular para la entrega y retiro del equipo
+
+## Requisitos de instalación
+
+Para garantizar la seguridad y funcionamiento óptimo de tu Paquete Duo Plus, se requieren:
+
+- Superficie plana: pasto nivelado, concreto, loseta o madera
+- Espacio mínimo: 8 m x 5 m (incluyendo 1 metro de margen de seguridad en todos los lados)
+- Toma de corriente: 110V, 15A, ubicada a menos de 10 metros del punto de instalación
+- Acceso vehicular: para el transporte del equipo al lugar del evento
+- Temperatura ambiente: entre 10°C y 35°C
+- Supervisión: se recomienda la presencia de un adulto responsable durante todo el evento
+
 🏰 **Lee's Castle**
 
 * Castillo inflable blanco de gran tamaño
@@ -58,6 +79,40 @@ El Paquete Duo Plus es una excelente opción para:
 ## Logística de renta y entrega
 
 La renta incluye montaje y desmontaje de ambas atracciones el día del evento, coordinados directamente en la zona metropolitana de la Ciudad de México y municipios del Estado de México. Recomendamos confirmar el espacio disponible y los extras opcionales deseados (resbaladilla, guirnalda de globos) al momento de la reserva.
+
+## Preguntas frecuentes
+
+**¿En qué se diferencia del Paquete Duo?**
+
+El Paquete Duo Plus incluye Lee's Castle, un castillo inflable de mayor tamaño (4 m x 4 m), en lugar del White Bounce House, ideal para eventos con más niños o que buscan una zona de juegos más amplia.
+
+**¿Puedo agregar la resbaladilla o la guirnalda de globos?**
+
+Sí, ambos extras son opcionales y se pueden agregar al paquete: la resbaladilla blanca para la alberca de pelotas y la guirnalda de globos decorativos para Lee's Castle.
+
+**¿El paquete incluye montaje y desmontaje?**
+
+Sí, la renta incluye montaje y desmontaje de ambas atracciones el día del evento.
+
+**¿Es buena opción para eventos al aire libre?**
+
+Sí, el Paquete Duo Plus es ideal para eventos al aire libre gracias a su tamaño y diseño, siempre que se cuente con el espacio mínimo requerido.
+
+**¿Se puede instalar en interiores?**
+
+Sí, ambos elementos del Paquete Duo Plus pueden instalarse en interiores siempre que el techo tenga al menos 4.5 metros de altura y haya suficiente espacio para el montaje seguro.
+
+**¿Cuánto tiempo se necesita para instalarlo?**
+
+El montaje completo toma entre 35 y 50 minutos, dependiendo de las condiciones del terreno. Nuestro equipo llega con anticipación para asegurar que todo esté listo antes del inicio del evento.
+
+**¿Incluye el servicio de limpieza?**
+
+Sí, el precio de renta incluye la limpieza y desinfección del equipo después del evento, así como su retiro.
+
+**¿Se puede rentar para más de 8 horas?**
+
+Sí, ofrecemos opciones de renta extendida. Consulta nuestros paquetes para 12, 16 o 24 horas. El costo adicional es de $250 por hora extra.
 
 🎨 **Ideal para:**
 

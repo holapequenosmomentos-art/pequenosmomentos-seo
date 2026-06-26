@@ -1,0 +1,389 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const whatsappAsesoria =
+  "https://wa.me/525539385685?text=Hola%2C%20me%20interesa%20la%20*Asesor%C3%ADa%20Personalizada*%20de%20renta%20de%20inflables.%20%C2%BFC%C3%B3mo%20agendo%3F";
+
+const whatsappMentoria =
+  "https://wa.me/525539385685?text=Hola%2C%20me%20interesa%20la%20*Mentor%C3%ADa%20Mensual*%20de%20renta%20de%20inflables.%20%C2%BFC%C3%B3mo%20funciona%3F";
+
+const asesoriaIncludes = [
+  "Sesión personalizada de 40 minutos",
+  "Análisis de tu caso específico",
+  "Recomendaciones claras y accionables",
+  "Modalidad online (Google Meet)",
+  "Qué inflables sí se rentan en tu zona",
+  "Logística: traslado, tiempos y riesgos",
+  "Errores comunes que debes evitar",
+  "Cómo recuperar la inversión rápido",
+];
+
+const asesoriaParaQuien = [
+  "Personas que quieren empezar a rentar inflables",
+  "Gente que ya compró inflables y no despega",
+  "Rentadores con problemas de precios, logística o clientes",
+];
+
+const mentoriaIncludes = [
+  { categoria: "Mentoría Premium 1:1", items: [
+    "Soporte directo por WhatsApp (respuestas en menos de 24 hrs)",
+    "Revisión y ajuste de precios",
+    "Ayuda con clientes difíciles",
+    "Estrategia de crecimiento",
+    "Análisis de decisiones antes de invertir",
+  ]},
+  { categoria: "Llamadas", items: [
+    "2 llamadas al mes (15–20 min)",
+    "Enfoque 100% práctico",
+  ]},
+  { categoria: "Materiales", items: [
+    "Checklist profesional",
+    "Cotizador",
+    "Políticas de cancelación",
+  ]},
+];
+
+const mentoriaParaQuien = [
+  "Ya tienen inflables",
+  "Ya están rentando o están por empezar",
+  "Quieren ganar mejor, no solo llenar Fechas",
+  "Aceptan seguir recomendaciones",
+];
+
+const faqs = [
+  {
+    pregunta: "¿Cuál me conviene, la asesoría o la mentoría?",
+    respuesta: "Si apenas estás evaluando si entrar al negocio o tienes dudas puntuales, la asesoría es tu punto de partida. Si ya tienes inflables y quieres crecer de forma constante con acompañamiento mensual, la mentoría es para ti.",
+  },
+  {
+    pregunta: "¿Cómo agendo mi sesión?",
+    respuesta: "Por WhatsApp. Escríbenos indicando qué servicio te interesa y coordinamos fecha y hora para tu sesión o llamada de introducción.",
+  },
+  {
+    pregunta: "¿La asesoría es solo para CDMX?",
+    respuesta: "No, la asesoría es online vía Google Meet y aplica para cualquier zona del país. El conocimiento está basado en experiencia real en CDMX, uno de los mercados más competitivos de México.",
+  },
+  {
+    pregunta: "¿Puedo empezar con la asesoría y después pasar a la mentoría?",
+    respuesta: "Sí, de hecho es el camino más natural. La asesoría te da claridad y la mentoría te acompaña en la ejecución mes a mes.",
+  },
+];
+---
+
+<BaseLayout
+  title="Asesoría y Mentoría para Negocio de Renta de Inflables | Pequeños Momentos"
+  description="Asesoría personalizada y mentoría mensual para arrancar o hacer crecer tu negocio de renta de inflables. Basado en experiencia real en CDMX. Agenda por WhatsApp."
+  ogImage="/og-asesoria.jpg"
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section class="relative bg-surface pt-14 pb-24 overflow-hidden h-screen flex items-center">
+    <div class="absolute -top-32 -right-20 w-125 h-125 bg-primary/10 rounded-full pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-20 -left-16 w-90 h-90 bg-accent/8 rounded-full  pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-[13px] text-muted">
+          <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+          <li aria-hidden="true"><span class="text-light">/</span></li>
+          <li class="text-text font-medium">Asesoría y Mentoría</li>
+        </ol>
+      </nav>
+
+      <div class="max-w-170">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-4">
+          Para rentadores de inflables
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl font-extrabold text-text leading-[1.1] mb-5">
+          ¿Quieres arrancar o crecer en el
+          <span class="block text-primary underline decoration-accent decoration-4 underline-offset-[6px]">
+            negocio de renta de inflables?
+          </span>
+        </h1>
+        <p class="text-base md:text-lg text-muted leading-relaxed mb-8">
+          Basado en experiencia real en CDMX, uno de los mercados más competitivos del país.
+          Te ahorro meses de prueba y error con orientación directa y accionable.
+        </p>
+
+        <!-- Dos CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="#asesoria"
+            class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-primary hover:bg-primary-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(155,93,229,0.3)] hover:-translate-y-px transition-all duration-200"
+          >
+            Asesoría — empezar
+          </a>
+          <a
+            href="#mentoria"
+            class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-display font-bold text-base rounded-xl transition-all duration-200"
+          >
+            Mentoría — crecer
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-14 bg-white [clip-path:polygon(0_100%,100%_0,100%_100%)]" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── Asesoría Personalizada ─────────────────────────────────── -->
+  <section id="asesoria" class="py-20 md:py-24 bg-white scroll-mt-20">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <!-- Columna izquierda: copy -->
+        <div>
+          <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-[12px] font-display font-bold rounded-full mb-5">
+            Paso 1
+          </span>
+          <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text leading-tight mb-4">
+            Asesoría Personalizada
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Si quieres empezar a rentar inflables y no sabes por dónde empezar, te ahorro meses de prueba y error.
+            Basado en experiencia real en uno de los mercados más competitivos del país.
+          </p>
+
+          <!-- Para quién es -->
+          <div class="bg-surface rounded-2xl p-5 mb-6">
+            <p class="font-display font-bold text-sm text-text mb-3">Ideal para:</p>
+            <ul class="flex flex-col gap-2">
+              {asesoriaParaQuien.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm text-muted">
+                  <svg class="shrink-0 mt-0.5 text-cta" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p class="font-display font-bold text-sm text-text mb-1">
+            Te llevo un plan personalizado según tu zona y presupuesto.
+          </p>
+          <p class="text-sm text-muted mb-0">
+            Una sola sesión puede cambiar completamente el rumbo de tu negocio.
+          </p>
+        </div>
+
+        <!-- Columna derecha: card de servicio -->
+        <div class="bg-white rounded-2xl border border-border shadow-[0_4px_32px_rgba(155,93,229,0.10)] overflow-hidden">
+
+          <!-- Header de la card -->
+          <div class="bg-primary px-6 py-5">
+            <p class="font-display font-extrabold text-xl text-white mb-1">Asesoría Personalizada</p>
+            <p class="text-white/70 text-sm">Sesión 1:1 · 40 minutos · Google Meet</p>
+          </div>
+
+          <!-- Incluye -->
+          <div class="px-6 py-5">
+            <p class="font-display font-bold text-[11px] uppercase tracking-widest text-muted mb-4">Qué incluye</p>
+            <ul class="flex flex-col gap-3 mb-6">
+              {asesoriaIncludes.map((item) => (
+                <li class="flex items-start gap-3 text-sm text-muted">
+                  <div class="shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-cta/15 mt-0.5">
+                    <svg class="text-cta-dk" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  </div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={whatsappAsesoria}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.3)] hover:-translate-y-px transition-all duration-200"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Agendar asesoría por WhatsApp
+            </a>
+            <p class="text-center text-[12px] text-light mt-2">Respondemos en menos de 1 hora</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Divisor ────────────────────────────────────────────────── -->
+  <div class="bg-surface border-y border-border py-6">
+    <div class="max-w-300 mx-auto px-5 md:px-10 flex items-center gap-4">
+      <div class="flex-1 h-px bg-border"></div>
+      <p class="font-display font-bold text-sm text-muted whitespace-nowrap px-2">
+        ¿Ya tienes inflables y quieres ganar más?
+      </p>
+      <div class="flex-1 h-px bg-border"></div>
+    </div>
+  </div>
+
+  <!-- ── Mentoría Mensual ───────────────────────────────────────── -->
+  <section id="mentoria" class="py-20 md:py-24 bg-surface scroll-mt-20">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <!-- Card de servicio primero en mobile, segundo en desktop -->
+        <div class="order-2 lg:order-1 bg-white rounded-2xl border border-border shadow-[0_4px_32px_rgba(155,93,229,0.10)] overflow-hidden">
+
+          <div class="bg-linear-to-r from-primary to-accent px-6 py-5">
+            <p class="font-display font-extrabold text-xl text-white mb-1">Mentoría Mensual</p>
+            <p class="text-white/80 text-sm">Acompañamiento 1:1 · Mes a mes · 100% práctico</p>
+          </div>
+
+          <div class="px-6 py-5">
+            {mentoriaIncludes.map(({ categoria, items }) => (
+              <div class="mb-5">
+                <p class="font-display font-bold text-sm text-text mb-3 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  {categoria}
+                </p>
+                <ul class="flex flex-col gap-2.5 pl-3.5">
+                  {items.map((item) => (
+                    <li class="flex items-start gap-3 text-sm text-muted">
+                      <div class="shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-primary/12 mt-0.5">
+                        <svg class="text-primary" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <a
+              href={whatsappMentoria}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-primary hover:bg-primary-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(155,93,229,0.3)] hover:-translate-y-px transition-all duration-200 mt-2"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Quiero la mentoría mensual
+            </a>
+            <p class="text-center text-[12px] text-light mt-2">Respondemos en menos de 1 hora</p>
+          </div>
+        </div>
+
+        <!-- Copy -->
+        <div class="order-1 lg:order-2">
+          <span class="inline-block px-3 py-1 bg-accent/15 text-accent text-[12px] font-display font-bold rounded-full mb-5">
+            Paso 2
+          </span>
+          <h2 class="font-display text-3xl md:text-4xl font-extrabold text-text leading-tight mb-4">
+            Mentoría Mensual
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Esta mentoría <span class="font-bold text-text">NO es para principiantes curiosos.</span>
+            Es para personas que ya están en el negocio y quieren resultados reales.
+          </p>
+
+          <!-- Para quién SÍ es -->
+          <div class="bg-white rounded-2xl border border-border p-5 mb-6">
+            <p class="font-display font-bold text-sm text-text mb-3">Es para ti si:</p>
+            <ul class="flex flex-col gap-3">
+              {mentoriaParaQuien.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm text-muted">
+                  <svg class="shrink-0 mt-0.5 text-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Para quién NO es -->
+          <div class="flex items-start gap-3 p-4 bg-red-50 border border-red-100 rounded-xl">
+            <svg class="shrink-0 mt-0.5 text-red-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            <p class="text-sm text-red-600">
+              <span class="font-bold">Si solo buscas tips sueltos,</span> esta mentoría no es para ti.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQs ──────────────────────────────────────────────────── -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-180 mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <p class="font-display text-[13px] font-bold uppercase tracking-widest text-primary mb-2">Dudas frecuentes</p>
+        <h2 class="font-display text-3xl font-extrabold text-text">Preguntas frecuentes</h2>
+      </div>
+      <ul class="flex flex-col gap-3">
+        {faqs.map(({ pregunta, respuesta }, i) => (
+          <li class="border border-border rounded-xl overflow-hidden bg-white">
+            <button
+              class="faq-btn w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-display font-bold text-sm text-text hover:text-primary transition-colors"
+              aria-expanded="false"
+              data-index={i}
+            >
+              {pregunta}
+              <svg class="faq-icon shrink-0 transition-transform duration-200" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-body hidden px-5 pb-4">
+              <p class="text-sm text-muted leading-relaxed">{respuesta}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── CTA final ─────────────────────────────────────────────── -->
+  <section class="bg-primary py-16">
+    <div class="max-w-160 mx-auto px-5 md:px-10 text-center">
+      <h2 class="font-display text-3xl font-extrabold text-white mb-3">
+        ¿No sabes por cuál empezar?
+      </h2>
+      <p class="text-white/75 mb-8 leading-relaxed">
+        Escríbenos y en dos minutos te decimos cuál servicio se adapta mejor a tu situación actual.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href={whatsappAsesoria}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.4)] hover:-translate-y-px transition-all duration-200"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Quiero la asesoría
+        </a>
+        <a
+          href={whatsappMentoria}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/15 hover:bg-white/25 text-white font-display font-bold text-base rounded-xl border border-white/30 transition-all duration-200"
+        >
+          Quiero la mentoría
+        </a>
+      </div>
+      <p class="text-white/50 text-[13px] mt-5">Sin costo · Sin compromiso · Respondemos en menos de 1 hora</p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((b) => {
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          (b.nextElementSibling as HTMLElement).classList.add('hidden');
+          (b.querySelector('.faq-icon') as HTMLElement).style.transform = '';
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      body.classList.toggle('hidden', isOpen);
+      icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+  });
+</script>

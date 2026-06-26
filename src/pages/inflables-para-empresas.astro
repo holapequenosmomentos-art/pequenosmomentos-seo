@@ -1,0 +1,195 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import B2BHero from "../../components/shared/B2BHero.astro";
+
+const whatsappUrl = "https://wa.me/525539385685?text=Hola%2C%20me%20interesan%20inflables%20para%20mi%20empresa.%20%C2%BFPodr%C3%ADan%20darme%20informaci%C3%B3n%3F";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Qué tipos de inflables son mejores para eventos corporativos?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Para eventos corporativos recomendamos castillos inflables de tamaño mediano, pistas de obstáculos y juegos interactivos. Son ideales para team building, días de familia y presentaciones de producto. Contamos con opciones que se adaptan a espacios reducidos y amplios.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Incluyen servicio de instalación y operación?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí, todos nuestros rentals incluyen entrega, instalación, supervisión técnica y retiro del equipo. Nuestro personal capacitado se encarga de todo el montaje para que usted solo disfrute del evento.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Pueden personalizar los inflables con la imagen de nuestra empresa?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí, ofrecemos servicio de personalización con logotipos, colores y mensajes corporativos. Esto es ideal para activations de marca, lanzamientos de producto y ferias comerciales.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cuál es la capacidad máxima de sus inflables?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La capacidad varía según el modelo, desde 10 hasta 50 personas simultáneamente. Trabajamos con las marcas más reconocidas para garantizar seguridad y durabilidad en uso intensivo.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿报告an descuentos para contratos recurrentes?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí, tenemos planes corporativos con tarifas preferenciales para empresas que requieren servicios recurrentes. Contáctenos para diseñar un paquete a la medida de sus necesidades.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Inflables para Empresas | Renta y Venta de Juegos Inflables Corporativos en CDMX y Estado de México"
+  description="Inflables corporativos para eventos empresariales, team building y activaciones de marca. Castillos, pistas y juegos para empresas en CDMX y Estado de México. Cotiza hoy."
+  ogImage="/og-empresas.jpg"
+  schema={faqSchema}
+  breadcrumbs={[{ name: "Inflables para Empresas", href: "/inflables-para-empresas" }]}
+>
+  <B2BHero
+    eyebrow="Inflables para Empresas"
+    title="Juegos inflables para"
+    titleHighlight="eventos corporativos"
+    description="Soluciones profesionales en inflables para empresas que buscan diferenciarse en sus eventos corporativos, team building y activaciones de marca. Más de 500 eventos realizados para empresas de todos los tamaños."
+    badges={[
+      { icon: "🏢", label: "Eventos corporativos" },
+      { icon: "🛡️", label: "Equipo certificado" },
+      { icon: "📋", label: "Responsabilidad civil incluida" },
+      { icon: "🎨", label: "Personalización disponible" },
+    ]}
+    primaryCta={{ label: "Ver catálogo de renta", href: "/renta-de-inflables" }}
+    whatsappUrl={whatsappUrl}
+  />
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-text mb-3">
+          ¿Por qué elegir inflables para eventos empresariales?
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Los inflables corporativos generan experiencias memorables que fortalecen la cultura empresarial y mejoran la percepción de marca entre colaboradores y clientes.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Team building efectivo</h3>
+          <p class="text-muted text-sm leading-relaxed">Los juegos inflables fomentan la integración, competencia sana y comunicación entre equipos de trabajo.</p>
+        </li>
+
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Alta participación</h3>
+          <p class="text-muted text-sm leading-relaxed">Atrapan la atención de niños y adultos por igual, garantizando que todos participen activamente.</p>
+        </li>
+
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Seguridad garantizada</h3>
+          <p class="text-muted text-sm leading-relaxed">Equipo revisado antes de cada evento, con certificación y seguro de responsabilidad civil incluido.</p>
+        </li>
+
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Imagen profesional</h3>
+          <p class="text-muted text-sm leading-relaxed">Demuestra atención al detalle y preocupación por el bienestar de tus colaboradores y sus familias.</p>
+        </li>
+
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Montaje rápido</h3>
+          <p class="text-muted text-sm leading-relaxed">Instalación profesional en menos de 2 horas. Nos encargamos de todo para que tú te concentres en tu evento.</p>
+        </li>
+
+        <li class="bg-surface rounded-2xl p-6 border border-border">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-text mb-2">Soluciones a medida</h3>
+          <p class="text-muted text-sm leading-relaxed">Desde alquiler hasta compra con personalización. Diseñamos el paquete ideal según tu presupuesto y espacio.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-surface border-y border-border">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-text mb-3">
+          Tipos de inflables para eventos corporativos
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Contamos con una amplia variedad de juegos inflables adecuados para diferentes tipos de eventos empresariales.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">🏰</div>
+          <h3 class="font-display font-bold text-text mb-1">Castillos inflables</h3>
+          <p class="text-muted text-sm">Ideales para eventos pequeños y medianos. Ocupan poco espacio y generan gran impacto.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">🏎️</div>
+          <h3 class="font-display font-bold text-text mb-1">Pistas de obstáculos</h3>
+          <p class="text-muted text-sm">Para competencias de equipo y actividades de integración. Varios niveles de dificultad.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">🎢</div>
+          <h3 class="font-display font-bold text-text mb-1">Toboganes gigante</h3>
+          <p class="text-muted text-sm">El favoritos del público. Ideal para eventos al aire libre y grandes celebraciones.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">🎯</div>
+          <h3 class="font-display font-bold text-text mb-1">Juegos interactivos</h3>
+          <p class="text-muted text-sm">Combina diversión con competencia. Perfectos para activaciones de marca y lanzamientos.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-3xl mx-auto px-5 md:px-10 text-center">
+      <h2 class="font-display text-2xl md:text-3xl font-extrabold text-white mb-4">
+        ¿Listo para cotizar tu evento corporativo?
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Contáctanos por WhatsApp y recibe asesoría personalizada en menos de 1 hora. Te ayudamos a elegir el inflable perfecto según tu tipo de evento, espacio y presupuesto.
+      </p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.4)] hover:-translate-y-px transition-all duration-200"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Solicitar cotización por WhatsApp
+      </a>
+    </div>
+  </section>
+</BaseLayout>

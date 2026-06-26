@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import B2BHero from "../../components/shared/B2BHero.astro";
+
+const whatsappUrl = "https://wa.me/525539385685?text=Hola%2C%20me%20interesan%20inflables%20en%20Estado%20de%20M%C3%A9xico.%20%C2%BFPodr%C3%ADan%20darme%20informaci%C3%B3n%3F";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Cuáles municipios del Estado de México cubren?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Damos servicio en todo el Estado de México incluyendo: Naucalpan, Tlalnepantla, Ecatepec, Cuautitlán, Atizapán, Metepec, Toluca, Nezahualcóyotl, Tultitlán, Coacalco, Cuautitlán Izcalli, Chalco, Texcoco y muchos más. Contáctanos para confirmar la cobertura de tu ubicación.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿El costo de entrega está incluido en el precio?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "El costo de entrega e instalación está incluido dentro del área metropolitana. Para ubicaciones más alejadas puede aplicar un cargo adicional por transportación que se detalla en tu cotización.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Con cuánta anticipación debo apartar mi fecha?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Recomendamos apartar con al menos 7 días de anticipación para garantizar disponibilidad, especialmente en temporada alta (marzo-mayo y octubre-diciembre). Para eventos urgentes, contáctanos y hacemos lo posible por acomodarte.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Pueden dar servicio el mismo día?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Dependiendo de la disponibilidad y ubicación, podemos ofrecer servicio el mismo día con un recargo adicional. Contáctanos para verificar opciones.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Inflables en Estado de México | Renta y Venta de Juegos Inflables en EdoMex y CDMX"
+  description="Inflables en Estado de México: Naucalpan, Tlalnepantla, Ecatepec, Toluca y más. Renta y venta de castillos, albercas y toboganes con entrega e instalación incluida."
+  ogImage="/og-edomex.jpg"
+  schema={faqSchema}
+  breadcrumbs={[{ name: "Inflables en Estado de México", href: "/inflables-en-estado-de-mexico" }]}
+>
+  <B2BHero
+    eyebrow="Estado de México"
+    title="Inflables en"
+    titleHighlight="Estado de México"
+    description="Servicio de renta y venta de inflables en todo el Estado de México. Contamos con presencia en los principales municipios: Naucalpan, Tlalnepantla, Ecatepec, Toluca y alrededores."
+    badges={[
+      { icon: "📍", label: "15+ municipios" },
+      { icon: "🚚", label: "Entrega gratuita zona urbana" },
+      { icon: "⏱️", label: "Respuesta en menos de 1 hora" },
+      { icon: "🏆", label: "+500 eventos realizados" },
+    ]}
+    primaryCta={{ label: "Ver catálogo de renta", href: "/renta-de-inflables" }}
+    whatsappUrl={whatsappUrl}
+  />
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-text mb-3">
+          Municipios que cubrimos en Estado de México
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Damos servicio en los principales municipios del Estado de México y la zona metropolitana. Consulta la disponibilidad para tu ubicación.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Naucalpan</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Tlalnepantla</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Ecatepec</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Cuautitlán</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Atizapán</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Metepec</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Toluca</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Nezahualcóyotl</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Tultitlán</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Coacalco</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Cuautitlán Izcalli</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Chalco</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Texcoco</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Huixquilucan</span>
+        </li>
+        <li class="bg-surface rounded-xl p-4 text-center border border-border">
+          <span class="font-display font-bold text-text">Nicolás Romero</span>
+        </li>
+      </ul>
+
+      <p class="text-center text-muted text-sm mt-6">
+        ¿No ves tu municipio? <a href={whatsappUrl} class="text-primary font-semibold hover:underline">Contáctanos</a> y verificamos si podemos darte servicio.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-surface border-y border-border">
+    <div class="max-w-300 mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold text-text mb-3">
+          ¿Por qué elegirnos en el Estado de México?
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Somos la opción preferida de empresas, escuelas y gobiernos en la zona por nuestra reliability y profesionalismo.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">⏱️</div>
+          <h3 class="font-display font-bold text-text mb-1">Respuesta rápida</h3>
+          <p class="text-muted text-sm">Respondemos solicitudes en menos de 1 hora en horario laboral.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">🛡️</div>
+          <h3 class="font-display font-bold text-text mb-1">Equipo certificado</h3>
+          <p class="text-muted text-sm">Todos los equipos-inspeccionados y con seguro de responsabilidad civil.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">👨‍🔧</div>
+          <h3 class="font-display font-bold text-text mb-1">Personal experimentado</h3>
+          <p class="text-muted text-sm">Operadores con años de experiencia en eventos de todos los tamaños.</p>
+        </li>
+        <li class="bg-white rounded-2xl p-5 border border-border">
+          <div class="text-3xl mb-3">💰</div>
+          <h3 class="font-display font-bold text-text mb-1">Precios justos</h3>
+          <p class="text-muted text-sm">Tarifas transparentes sin costos ocultos. El precio que ves es el precio que pagas.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-3xl mx-auto px-5 md:px-10 text-center">
+      <h2 class="font-display text-2xl md:text-3xl font-extrabold text-white mb-4">
+        ¿Buscas inflables en el Estado de México?
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Contáctanos por WhatsApp y recibe una cotización personalizada para tu evento. Damos servicio en todos los municipios principales.
+      </p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta-dk text-white font-display font-bold text-base rounded-xl shadow-[0_4px_14px_rgba(0,200,150,0.4)] hover:-translate-y-px transition-all duration-200"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Cotizar en mi municipio
+      </a>
+    </div>
+  </section>
+</BaseLayout>

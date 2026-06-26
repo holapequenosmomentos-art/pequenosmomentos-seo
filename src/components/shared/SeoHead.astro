@@ -4,7 +4,8 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
-  schema?: Record<string, unknown>; // JSON-LD adicional por página
+  schema?: Record<string, unknown>;
+  breadcrumbs?: Array<{ name: string; href: string }>;
 }
 
 const {
@@ -13,77 +14,103 @@ const {
   canonical,
   ogImage = "/og-default.jpg",
   schema,
+  breadcrumbs,
 } = Astro.props;
 
 const siteUrl   = "https://pequenosmomentos.mx";
 const siteName  = "Pequeños Momentos";
 const canonicalUrl = canonical ?? Astro.url.href;
 
-// Schema LocalBusiness — se inyecta en todas las páginas
-const localBusinessSchema = {
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Organization",
   name: siteName,
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
-  image: `${siteUrl}${ogImage}`,
-  description:
-    "Renta y venta de inflables para fiestas infantiles en CDMX y Estado de México. Entrega e instalación incluida.",
+  description: "Fabricante y proveedor de inflables comerciales para renta y venta en CDMX y Estado de México. Especialistas en soluciones B2B para empresas, escuelas y gobierno.",
   telephone: "+525539385685",
   email: "hola.pequenosmomentos@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Nicolás Romero",
-    addressRegion: "Estado de México",
-    addressCountry: "MX",
-  },
-  areaServed: [
-    "Ciudad de México",
-    "Nicolás Romero",
-    "Naucalpan de Juárez",
-    "Tlalnepantla de Baz",
-    "Cuautitlán Izcalli",
-    "Cuautitlán",
-    "Tepotzotlán",
-    "Tultepec",
-    "Tultitlán",
-    "Atizapán de Zaragoza",
-    "Huixquilucan",
-  ],
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "10:00",
-      closes: "18:30",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday"],
-      opens: "09:00",
-      closes: "14:00",
-    },
-  ],
+  image: `${siteUrl}/logo-sf.png`,
   sameAs: [
     "https://www.instagram.com/pequenosmomentos.mx/",
     "https://www.facebook.com/pequenosmomentos.mx",
     "https://www.tiktok.com/@pequenosmomentos.mx",
   ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Nicolás Romero",
+    addressLocality: "Nicolás Romero",
+    addressRegion: "Estado de México",
+    postalCode: "56600",
+    addressCountry: "MX",
+  },
+  geo: {
+    "@type": "Geo",
+    latitude: 19.6414,
+    longitude: -99.3014,
+  },
+  priceRange: "$$",
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "10:00", closes: "18:30" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "14:00" },
+  ],
+  areaServed: [
+    { "@type": "State", name: "Estado de México" },
+    { "@type": "City", name: "Ciudad de México" },
+    { "@type": "City", name: "Toluca" },
+    { "@type": "City", name: "Naucalpan de Juárez" },
+    { "@type": "City", name: "Tlalnepantla de Baz" },
+    { "@type": "City", name: "Ecatepec de Morelos" },
+    { "@type": "City", name: "Cuautitlán" },
+    { "@type": "City", name: "Atizapán de Zaragoza" },
+    { "@type": "City", name: "Metepec" },
+    { "@type": "City", name: "Nezahualcóyotl" },
+    { "@type": "City", name: "Tultitlán" },
+    { "@type": "City", name: "Coacalco de Berriozábal" },
+    { "@type": "City", name: "Cuautitlán Izcalli" },
+    { "@type": "City", name: "Chalco" },
+    { "@type": "City", name: "Texcoco" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Renta y Venta de Inflables",
+    itemListElement: [
+      { "@type": "Offer", name: "Renta de inflables", url: `${siteUrl}/renta-de-inflables` },
+      { "@type": "Offer", name: "Venta de inflables", url: `${siteUrl}/venta-de-inflables` },
+    ],
+  },
 };
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteName,
+  image: `${siteUrl}${ogImage}`,
+  priceRange: "$$",
+  servesCuisine: "Renta y venta de inflables",
+  address: { "@type": "PostalAddress", addressLocality: "Nicolás Romero", addressRegion: "Estado de México", addressCountry: "MX" },
+};
+
+const breadcrumbSchema = breadcrumbs ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: crumb.name,
+    item: `${siteUrl}${crumb.href}`,
+  })),
+} : null;
 ---
 
-<!-- Básico -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#9B5DE5" />
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
-
-<!-- Robots -->
 <meta name="robots" content="index, follow" />
 <meta name="googlebot" content="index, follow" />
 
-<!-- Open Graph -->
 <meta property="og:type"        content="website" />
 <meta property="og:site_name"   content={siteName} />
 <meta property="og:url"         content={canonicalUrl} />
@@ -94,19 +121,16 @@ const localBusinessSchema = {
 <meta property="og:image:height" content="630" />
 <meta property="og:locale"      content="es_MX" />
 
-<!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image" />
 <meta name="twitter:title"       content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image"       content={`${siteUrl}${ogImage}`} />
 
-<!-- Favicon mínimo (agrega tus propios en /public) -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<!-- JSON-LD LocalBusiness (siempre) -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-
-<!-- JSON-LD adicional de la página (FAQPage, Product, etc.) -->
-{schema && (
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-)}
+{breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
+{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
